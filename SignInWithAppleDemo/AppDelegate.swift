@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 查询授权状态
+        // 苹果说这个接口很快
+        let provider = ASAuthorizationAppleIDProvider()
+        provider.getCredentialState(forUserID: "当前用户的唯一标识，也就是授权成功后返回的user") { (credentialState, error) in
+            switch(credentialState){
+            case .authorized:
+                print("Apple ID Credential is valid")
+            case .revoked:
+                print("Apple ID Credential revoked, handle unlink")
+            case .notFound:
+                print("Credential not found, show login UI")
+            case .transferred:
+                print("Credential not found, show login UI")
+            default:
+                break
+            }
+        }
+        
+        // 监听用户是否解绑AppleID
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: OperationQueue.main) { (notification) in
+            print("用户登出Apple ID")
+        }
+        
         return true
     }
 
