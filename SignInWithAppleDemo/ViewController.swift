@@ -29,35 +29,35 @@ class ViewController: UIViewController {
         stack.addArrangedSubview(signInButton)
         
         let signInButton1 = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton1.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton1)
         
         let signInButton2 = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .whiteOutline)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton2.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton2)
         
         let signInButton3 = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .white)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton3.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton3)
         
         let signInButton4 = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton4.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton4)
         
         let signInButton5 = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .whiteOutline)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton5.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton5)
         
         let signInButton6 = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .white)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton6.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton6)
         
         let signInButton7 = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black)
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton7.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton7)
         
         let signInButton8 = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .whiteOutline )
-        signInButton.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+        signInButton8.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
         stack.addArrangedSubview(signInButton8)
     }
 

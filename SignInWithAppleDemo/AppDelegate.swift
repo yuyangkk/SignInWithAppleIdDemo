@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Apple ID Credential revoked, handle unlink")
             case .notFound:
                 print("Credential not found, show login UI")
-            case .transferred:
-                print("Credential not found, show login UI")
             default:
                 break
             }
@@ -37,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 监听用户是否解绑AppleID
         NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: OperationQueue.main) { (notification) in
+            // App生命周期存续期间，以下变动会收到该通知
+            // 1.退出登录AppleId后返回到App
+            // 2.授权成功会调用
+            // 3.在设置中取消用户授权后返回到App
             print("用户登出Apple ID")
         }
         
