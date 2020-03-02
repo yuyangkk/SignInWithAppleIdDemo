@@ -104,6 +104,16 @@ class ViewController: UIViewController {
         if let identityToken = String(data: credential.identityToken!, encoding: .utf8) {
             print("identityToken:\(identityToken)")
             
+            // base64字符串长度通常是4的倍数，如果不是4的倍数转NSData会失败
+            // 解决方式：在字符串后面补"="，直到长度为4的倍数为止
+            
+            let paddedLength = base64.count + (4 - (base64.count % 4))
+            let paddedBase64String = base64.padding(toLength: paddedLength, withPad: "=", startingAt: 0)
+            
+            let data = NSData(base64Encoded: paddedBase64String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+            let dictionary = try! JSONSerialization.jsonObject(with: data! as Data, options: .mutableContainers)
+            print("解析出来的数据：\(dictionary)")
+            
             let publicKeyString = """
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlxrwmuYSAsTfn+lUu4go
